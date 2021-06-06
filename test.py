@@ -44,6 +44,8 @@ def user():
 
     if "username" in session and "password" in session:
         username = session["username"]
+        if username in open('specs.json'):
+            raise UsernameAlreadyExists
         password = session["password"]
         the_user = Authenticator(username,password)
         the_user.add_user()
